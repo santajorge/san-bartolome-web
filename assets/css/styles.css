@@ -1,0 +1,664 @@
+/* ============================================================
+   SAN BARTOLOMÉ · IGLESIA ANGLICANA ROSARIO
+   Paleta inspirada en el templo: ladrillo, madera, vitrales
+   ============================================================ */
+
+/* --- TOKENS ------------------------------------------------ */
+:root {
+  --color-pergamino:   #F5EFE6;   /* fondo principal */
+  --color-piedra:      #EAE0D0;   /* fondo alterno suave */
+  --color-madera:      #2B1F14;   /* secciones oscuras */
+  --color-ladrillo:    #8B3A2A;   /* acento principal */
+  --color-vitral:      #4A6741;   /* acento secundario */
+  --color-dorado:      #C9A96E;   /* detalles, líneas, hover */
+  --color-texto:       #3D3530;   /* texto corrido */
+  --color-texto-suave: #7A6E66;   /* texto secundario */
+  --color-blanco:      #FDFAF6;
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'Source Sans 3', system-ui, sans-serif;
+
+  --max-width: 1160px;
+  --radius: 2px;
+  --transition: 0.35s ease;
+}
+
+/* --- RESET BÁSICO ----------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--color-texto);
+  background-color: var(--color-pergamino);
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+address { font-style: normal; }
+
+/* --- NAVBAR ----------------------------------------------- */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 0 2rem;
+  background: transparent;
+  transition: background var(--transition), box-shadow var(--transition);
+}
+.navbar.scrolled {
+  background: var(--color-madera);
+  box-shadow: 0 2px 24px rgba(0,0,0,0.35);
+}
+.nav-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+.nav-logo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+.nav-logo-name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-blanco);
+  letter-spacing: 0.02em;
+}
+.nav-logo-sub {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 300;
+  color: var(--color-dorado);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2.2rem;
+}
+.nav-links a {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-blanco);
+  opacity: 0.85;
+  transition: opacity var(--transition), color var(--transition);
+}
+.nav-links a:hover {
+  opacity: 1;
+  color: var(--color-dorado);
+}
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.nav-toggle span {
+  display: block;
+  width: 26px;
+  height: 2px;
+  background: var(--color-blanco);
+  transition: var(--transition);
+}
+
+/* --- HERO ------------------------------------------------- */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+}
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  filter: saturate(0.7);
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(43, 31, 20, 0.75) 0%,
+    rgba(43, 31, 20, 0.55) 50%,
+    rgba(43, 31, 20, 0.80) 100%
+  );
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 1.5rem;
+  max-width: 780px;
+}
+.hero-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-dorado);
+  margin-bottom: 1.2rem;
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--color-blanco);
+  margin-bottom: 1.4rem;
+}
+.hero-sub {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 300;
+  color: rgba(253, 250, 246, 0.85);
+  margin-bottom: 2.4rem;
+  line-height: 1.65;
+}
+
+/* Línea de tiempo firma */
+.hero-timeline {
+  position: absolute;
+  bottom: 2.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  width: min(540px, 80vw);
+}
+.timeline-year {
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--color-dorado);
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+.timeline-track {
+  position: relative;
+  flex: 1;
+  height: 2px;
+  display: flex;
+  align-items: center;
+}
+.timeline-line {
+  position: absolute;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--color-dorado);
+  animation: drawLine 2.2s 0.8s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+@keyframes drawLine {
+  to { width: 100%; }
+}
+.timeline-dot {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-dorado);
+  opacity: 0;
+  animation: dotAppear 0.4s ease forwards;
+}
+.timeline-dot--start {
+  left: 0;
+  animation-delay: 0.7s;
+}
+.timeline-dot--end {
+  right: 0;
+  animation-delay: 2.9s;
+}
+@keyframes dotAppear {
+  to { opacity: 1; }
+}
+
+/* --- BOTONES ---------------------------------------------- */
+.btn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.85rem 2rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
+}
+.btn-primary {
+  background: var(--color-ladrillo);
+  color: var(--color-blanco);
+  border: 2px solid var(--color-ladrillo);
+}
+.btn-primary:hover {
+  background: transparent;
+  color: var(--color-blanco);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--color-blanco);
+  border: 2px solid var(--color-dorado);
+  margin-top: 1.8rem;
+}
+.btn-outline:hover {
+  background: var(--color-dorado);
+  color: var(--color-madera);
+}
+
+/* --- CONTENEDORES ----------------------------------------- */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.container--split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.container--centered {
+  text-align: center;
+  max-width: 720px;
+}
+
+/* --- SECCIONES -------------------------------------------- */
+.section {
+  padding: 7rem 2rem;
+}
+.section--light {
+  background: var(--color-pergamino);
+}
+.section--stone {
+  background: var(--color-piedra);
+}
+.section--dark {
+  background: var(--color-madera);
+}
+
+/* --- TIPOGRAFÍA DE SECCIÓN -------------------------------- */
+.section-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-ladrillo);
+  margin-bottom: 0.9rem;
+  display: block;
+}
+.section-eyebrow--light {
+  color: var(--color-dorado);
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--color-texto);
+  margin-bottom: 1.6rem;
+}
+.section-title--light {
+  color: var(--color-blanco);
+}
+.section-body {
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--color-texto-suave);
+  margin-bottom: 1.2rem;
+  max-width: 540px;
+}
+.section-body--light {
+  color: rgba(253, 250, 246, 0.75);
+}
+.section-body--intro {
+  font-size: 1.15rem;
+  font-weight: 300;
+  color: var(--color-texto);
+}
+
+/* --- DECO CARD (Quiénes Somos) ---------------------------- */
+.split-deco {
+  display: flex;
+  justify-content: center;
+}
+.deco-card {
+  background: var(--color-madera);
+  color: var(--color-blanco);
+  padding: 3rem 2.5rem;
+  max-width: 340px;
+  width: 100%;
+  position: relative;
+  border-left: 3px solid var(--color-dorado);
+}
+.deco-year {
+  font-family: var(--font-display);
+  font-size: 4.5rem;
+  font-weight: 900;
+  color: var(--color-dorado);
+  line-height: 1;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+.deco-label {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(253,250,246,0.5);
+  margin-bottom: 1.4rem;
+}
+.deco-divider {
+  height: 1px;
+  background: var(--color-dorado);
+  opacity: 0.35;
+  margin-bottom: 1.4rem;
+}
+.deco-text {
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: rgba(253,250,246,0.75);
+  line-height: 1.7;
+}
+
+/* --- PILLARS (Cómo vivimos la fe) ------------------------- */
+.fe-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  margin-top: 4rem;
+}
+.pillar {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  border: 1px solid rgba(201, 169, 110, 0.2);
+  transition: border-color var(--transition);
+}
+.pillar:hover {
+  border-color: rgba(201, 169, 110, 0.6);
+}
+.pillar-icon {
+  font-size: 1.5rem;
+  color: var(--color-dorado);
+  margin-bottom: 1.2rem;
+}
+.pillar-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-blanco);
+  margin-bottom: 0.8rem;
+}
+.pillar-body {
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: rgba(253,250,246,0.65);
+  line-height: 1.7;
+}
+
+/* --- ACTIVITIES GRID -------------------------------------- */
+.activities-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3.5rem;
+}
+.activity-card {
+  background: var(--color-blanco);
+  padding: 2.2rem;
+  border-top: 3px solid var(--color-piedra);
+  transition: border-color var(--transition), transform var(--transition);
+}
+.activity-card:hover {
+  border-color: var(--color-ladrillo);
+  transform: translateY(-4px);
+}
+.activity-card-header {
+  margin-bottom: 1rem;
+}
+.activity-tag {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-vitral);
+}
+.activity-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-texto);
+  margin-bottom: 0.9rem;
+  line-height: 1.25;
+}
+.activity-body {
+  font-size: 0.95rem;
+  color: var(--color-texto-suave);
+  line-height: 1.7;
+}
+.activity-card--cta {
+  background: var(--color-madera);
+  border-color: var(--color-dorado);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.activity-card--cta .activity-title {
+  color: var(--color-blanco);
+}
+.activity-card--cta .activity-body {
+  color: rgba(253,250,246,0.65);
+  margin-bottom: 1.6rem;
+}
+.activity-socials {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-dorado);
+  letter-spacing: 0.05em;
+  transition: opacity var(--transition);
+}
+.social-link:hover { opacity: 0.75; }
+
+/* --- HORARIOS --------------------------------------------- */
+.horarios-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  margin-top: 3.5rem;
+}
+.horario-card {
+  background: var(--color-blanco);
+  padding: 2.8rem 2.5rem;
+  border-bottom: 3px solid var(--color-ladrillo);
+  text-align: center;
+}
+.horario-dia {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-ladrillo);
+  margin-bottom: 0.5rem;
+}
+.horario-hora {
+  font-family: var(--font-display);
+  font-size: 3.2rem;
+  font-weight: 900;
+  color: var(--color-texto);
+  line-height: 1;
+  margin-bottom: 1.4rem;
+}
+.horario-divider {
+  width: 3rem;
+  height: 2px;
+  background: var(--color-dorado);
+  margin: 0 auto 1.4rem;
+}
+.horario-nombre {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-texto);
+  margin-bottom: 0.8rem;
+}
+.horario-desc {
+  font-size: 0.92rem;
+  color: var(--color-texto-suave);
+  line-height: 1.7;
+}
+
+/* --- CONTACTO --------------------------------------------- */
+.contact-address {
+  margin-top: 1.8rem;
+}
+.contact-item {
+  font-size: 1rem;
+  color: rgba(253,250,246,0.75);
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.contact-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-dorado);
+}
+.contact-link {
+  color: rgba(253,250,246,0.75);
+  transition: color var(--transition);
+}
+.contact-link:hover { color: var(--color-dorado); }
+.split-map {
+  height: 400px;
+  overflow: hidden;
+  border: 1px solid rgba(201,169,110,0.2);
+}
+.map-placeholder {
+  width: 100%;
+  height: 100%;
+}
+
+/* --- FOOTER ----------------------------------------------- */
+.footer {
+  background: #1A1109;
+  padding: 3rem 2rem;
+}
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+}
+.footer-name {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-blanco);
+}
+.footer-sub {
+  font-size: 0.78rem;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: var(--color-dorado);
+  text-transform: uppercase;
+  margin-top: 0.15rem;
+}
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1.8rem;
+}
+.footer-nav a {
+  font-size: 0.82rem;
+  color: rgba(253,250,246,0.5);
+  letter-spacing: 0.06em;
+  transition: color var(--transition);
+}
+.footer-nav a:hover { color: var(--color-dorado); }
+.footer-legal {
+  font-size: 0.75rem;
+  color: rgba(253,250,246,0.25);
+  letter-spacing: 0.06em;
+}
+
+/* --- REVEAL (preparación, sin animación aún) -------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal--delay.visible  { transition-delay: 0.15s; }
+.reveal--delay-2.visible { transition-delay: 0.3s; }
+
+/* --- RESPONSIVE ------------------------------------------- */
+@media (max-width: 900px) {
+  .container--split,
+  .fe-pillars,
+  .activities-grid,
+  .horarios-grid {
+    grid-template-columns: 1fr;
+  }
+  .split-map { height: 280px; }
+  .deco-card { max-width: 100%; }
+  .nav-links { display: none; flex-direction: column; position: absolute; top: 72px; left: 0; right: 0; background: var(--color-madera); padding: 1.5rem 2rem; gap: 1.2rem; }
+  .nav-links.open { display: flex; }
+  .nav-toggle { display: flex; }
+}
+@media (max-width: 540px) {
+  .section { padding: 5rem 1.2rem; }
+  .hero-title { font-size: 2rem; }
+  .hero-timeline { width: 90vw; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .timeline-line, .timeline-dot { animation: none; }
+  .timeline-line { width: 100%; }
+  .timeline-dot { opacity: 1; }
+  .reveal { opacity: 1; transform: none; }
+}
