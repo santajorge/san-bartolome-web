@@ -44,12 +44,9 @@ address { font-style: normal; }
   top: 0; left: 0; right: 0;
   z-index: 100;
   padding: 0 2rem;
-  background: transparent;
-  transition: background var(--transition), box-shadow var(--transition);
-}
-.navbar.scrolled {
   background: var(--color-madera);
   box-shadow: 0 2px 24px rgba(0,0,0,0.35);
+  transition: background var(--transition), box-shadow var(--transition);
 }
 .nav-inner {
   max-width: var(--max-width);
@@ -210,13 +207,16 @@ address { font-style: normal; }
 .timeline-line {
   position: absolute;
   left: 0;
-  width: 0;
+  width: 100%;
   height: 1px;
   background: var(--color-dorado);
+  transform-origin: left;
+  transform: scaleX(0);
+  will-change: transform;
   animation: drawLine 2.2s 0.8s cubic-bezier(0.22,1,0.36,1) forwards;
 }
 @keyframes drawLine {
-  to { width: 100%; }
+  to { transform: scaleX(1); }
 }
 .timeline-dot {
   position: absolute;
@@ -287,6 +287,12 @@ address { font-style: normal; }
 .container--centered {
   text-align: center;
   max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.container--centered .section-body {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* --- SECCIONES -------------------------------------------- */
@@ -399,11 +405,17 @@ address { font-style: normal; }
 .pillar {
   text-align: center;
   padding: 2.5rem 1.5rem;
-  border: 1px solid rgba(201, 169, 110, 0.2);
-  transition: border-color var(--transition);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(201, 169, 110, 0.25);
+  border-top: 2px solid var(--color-dorado);
+  border-radius: 2px;
+  transition: background var(--transition), border-color var(--transition), transform var(--transition);
 }
 .pillar:hover {
-  border-color: rgba(201, 169, 110, 0.6);
+  background: rgba(255, 255, 255, 0.10);
+  border-top-color: var(--color-ladrillo);
+  border-color: rgba(201, 169, 110, 0.45);
+  transform: translateY(-4px);
 }
 .pillar-icon {
   font-size: 1.5rem;
@@ -420,7 +432,7 @@ address { font-style: normal; }
 .pillar-body {
   font-size: 0.95rem;
   font-weight: 300;
-  color: rgba(253,250,246,0.65);
+  color: rgba(253, 250, 246, 0.80);
   line-height: 1.7;
 }
 
@@ -701,127 +713,6 @@ address { font-style: normal; }
   padding: 3rem 2.5rem;
 }
 
-/* --- CARRUSEL --------------------------------------------- */
-.carousel-wrapper {
-  position: relative;
-  max-width: var(--max-width);
-  margin: 3rem auto 0;
-  padding: 0 2rem;
-  overflow: hidden;
-}
-.carousel {
-  position: relative;
-  width: 100%;
-  border-radius: var(--radius);
-  overflow: hidden;
-  aspect-ratio: 16 / 7;
-  background: var(--color-madera);
-}
-.carousel-track {
-  display: flex;
-  height: 100%;
-  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-}
-.carousel-slide {
-  min-width: 100%;
-  height: 100%;
-  position: relative;
-  flex-shrink: 0;
-}
-.carousel-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  filter: saturate(0.75) brightness(0.85);
-}
-.carousel-caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 2rem 2.5rem;
-  background: linear-gradient(to top, rgba(43,31,20,0.9) 0%, transparent 100%);
-  color: var(--color-blanco);
-}
-.carousel-caption .carousel-tag {
-  display: inline-block;
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--color-dorado);
-  margin-bottom: 0.4rem;
-}
-.carousel-caption p {
-  font-size: 1rem;
-  font-weight: 300;
-  color: rgba(253,250,246,0.85);
-  line-height: 1.5;
-  max-width: 500px;
-}
-.carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(43,31,20,0.65);
-  border: 1px solid rgba(201,169,110,0.35);
-  color: var(--color-dorado);
-  font-size: 1.2rem;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background var(--transition), border-color var(--transition);
-  z-index: 10;
-}
-.carousel-btn:hover {
-  background: rgba(43,31,20,0.9);
-  border-color: var(--color-dorado);
-}
-.carousel-btn--prev { left: 2.8rem; }
-.carousel-btn--next { right: 2.8rem; }
-.carousel-dots {
-  display: flex;
-  justify-content: center;
-  gap: 0.6rem;
-  margin-top: 1.2rem;
-}
-.carousel-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--color-texto-suave);
-  border: none;
-  cursor: pointer;
-  transition: background var(--transition), transform var(--transition);
-  padding: 0;
-}
-.carousel-dot.active {
-  background: var(--color-ladrillo);
-  transform: scale(1.3);
-}
-
-@media (max-width: 900px) {
-  .carousel { aspect-ratio: 4 / 3; }
-  .carousel-btn--prev { left: 0.8rem; }
-  .carousel-btn--next { right: 0.8rem; }
-}
-@media (max-width: 540px) {
-  .carousel { aspect-ratio: 1 / 1; }
-  .carousel-caption { padding: 1.2rem; }
-}
-
-/* --- NAVBAR SIEMPRE CON FONDO OSCURO ---------------------- */
-/* Reemplaza el comportamiento transparente inicial           */
-.navbar {
-  background: var(--color-madera) !important;
-  box-shadow: 0 2px 24px rgba(0,0,0,0.35);
-}
-
 /* --- REDES EN CONTACTO ------------------------------------ */
 .contact-socials {
   display: flex;
@@ -843,84 +734,50 @@ address { font-style: normal; }
   color: var(--color-dorado);
   transition: color var(--transition);
 }
-.contact-social-link:hover {
-  color: var(--color-dorado);
-}
-.contact-social-link:hover svg {
+.contact-social-link:hover, .contact-social-link:hover svg {
   color: var(--color-blanco);
 }
 
-/* ============================================================
-   FIXES: centrado fe, pillars con contraste, carrusel
-   ============================================================ */
-
-/* Fix centrado container--centered dentro de sección oscura */
-.section--dark .container--centered {
-  margin-left: auto;
-  margin-right: auto;
-}
-.section--dark .section-body {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Pillars rediseñados con más contraste sobre fondo madera */
-.pillar {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(201, 169, 110, 0.25);
-  border-top: 2px solid var(--color-dorado);
-  border-radius: 2px;
-  transition: background var(--transition), border-color var(--transition), transform var(--transition);
-}
-.pillar:hover {
-  background: rgba(255, 255, 255, 0.10);
-  border-top-color: var(--color-ladrillo);
-  border-color: rgba(201, 169, 110, 0.45);
-  transform: translateY(-4px);
-}
-.pillar-body {
-  color: rgba(253, 250, 246, 0.80);
-}
-
-/* Carrusel: fix overflow para que las flechas sean visibles */
+/* --- CARRUSEL --------------------------------------------- */
 .carousel-wrapper {
-  overflow: visible;
   position: relative;
+  max-width: var(--max-width);
+  margin: 3rem auto 0;
+  padding: 0;
+  overflow: hidden;
 }
 .carousel {
+  position: relative;
+  width: 100%;
+  border-radius: var(--radius);
   overflow: hidden;
-  border-radius: 2px;
+  aspect-ratio: 16 / 7;
+  background: var(--color-madera);
 }
-
-/* Flechas reposicionadas fuera del track, sobre el wrapper */
-.carousel-btn {
-  position: absolute;
-  top: calc(50% - 28px); /* sube para no quedar sobre el caption */
-  z-index: 20;
-  background: rgba(43, 31, 20, 0.80);
-  border: 1.5px solid var(--color-dorado);
-  color: var(--color-dorado);
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  cursor: pointer;
+.carousel-track {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.1rem;
-  transition: background var(--transition), color var(--transition), transform var(--transition);
-  box-shadow: 0 2px 12px rgba(0,0,0,0.45);
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
 }
-.carousel-btn:hover {
-  background: var(--color-dorado);
-  color: var(--color-madera);
-  transform: scale(1.08);
+.carousel-slide {
+  min-width: 100%;
+  height: 100%;
+  position: relative;
+  flex-shrink: 0;
 }
-.carousel-btn--prev { left: -1.4rem; }
-.carousel-btn--next { right: -1.4rem; }
-
-/* Caption del carrusel más destacado */
+.carousel-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(0.75) brightness(0.85);
+}
 .carousel-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
   padding: 2.4rem 2.8rem;
   background: linear-gradient(
     to top,
@@ -928,12 +785,15 @@ address { font-style: normal; }
     rgba(43, 31, 20, 0.70) 60%,
     transparent 100%
   );
+  color: var(--color-blanco);
 }
 .carousel-caption .carousel-tag {
-  font-size: 0.72rem;
-  letter-spacing: 0.22em;
-  color: var(--color-dorado);
   display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-dorado);
   margin-bottom: 0.6rem;
   border-bottom: 1px solid rgba(201, 169, 110, 0.4);
   padding-bottom: 0.4rem;
@@ -946,23 +806,10 @@ address { font-style: normal; }
   max-width: 560px;
   text-shadow: 0 1px 4px rgba(0,0,0,0.6);
 }
-
-@media (max-width: 900px) {
-  .carousel-btn--prev { left: 0.4rem; }
-  .carousel-btn--next { right: 0.4rem; }
-}
-
-/* ============================================================
-   CARRUSEL: fix flechas dentro del #carousel (posicion final)
-   ============================================================ */
-.carousel {
-  position: relative; /* ancla los botones al contenedor de imagen */
-}
 .carousel-btn {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);  /* centrado vertical limpio, sin scale que lo rompa */
-  z-index: 20;
+  transform: translateY(-50%);
   background: rgba(43, 31, 20, 0.82);
   border: 1.5px solid var(--color-dorado);
   color: var(--color-dorado);
@@ -977,7 +824,7 @@ address { font-style: normal; }
   line-height: 1;
   box-shadow: 0 2px 12px rgba(0,0,0,0.5);
   transition: background var(--transition), color var(--transition), border-color var(--transition);
-  /* SIN transform en hover para que no se mueva */
+  z-index: 20;
 }
 .carousel-btn:hover {
   background: var(--color-dorado);
@@ -986,15 +833,34 @@ address { font-style: normal; }
 }
 .carousel-btn--prev { left: 1.2rem; }
 .carousel-btn--next { right: 1.2rem; }
-
-/* Wrapper vuelve a overflow hidden para no mostrar slides laterales */
-.carousel-wrapper {
-  overflow: hidden;
-  padding: 0; /* sin padding lateral que antes corría las flechas */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 1.2rem;
+}
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-texto-suave);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background var(--transition), transform var(--transition);
+}
+.carousel-dot.active {
+  background: var(--color-ladrillo);
+  transform: scale(1.3);
 }
 
 @media (max-width: 900px) {
+  .carousel { aspect-ratio: 4 / 3; }
   .carousel-btn { width: 38px; height: 38px; font-size: 1rem; }
   .carousel-btn--prev { left: 0.6rem; }
   .carousel-btn--next { right: 0.6rem; }
+}
+@media (max-width: 540px) {
+  .carousel { aspect-ratio: 1 / 1; }
+  .carousel-caption { padding: 1.2rem; }
 }
