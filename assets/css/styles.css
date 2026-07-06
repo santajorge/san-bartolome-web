@@ -849,3 +849,152 @@ address { font-style: normal; }
 .contact-social-link:hover svg {
   color: var(--color-blanco);
 }
+
+/* ============================================================
+   FIXES: centrado fe, pillars con contraste, carrusel
+   ============================================================ */
+
+/* Fix centrado container--centered dentro de sección oscura */
+.section--dark .container--centered {
+  margin-left: auto;
+  margin-right: auto;
+}
+.section--dark .section-body {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Pillars rediseñados con más contraste sobre fondo madera */
+.pillar {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(201, 169, 110, 0.25);
+  border-top: 2px solid var(--color-dorado);
+  border-radius: 2px;
+  transition: background var(--transition), border-color var(--transition), transform var(--transition);
+}
+.pillar:hover {
+  background: rgba(255, 255, 255, 0.10);
+  border-top-color: var(--color-ladrillo);
+  border-color: rgba(201, 169, 110, 0.45);
+  transform: translateY(-4px);
+}
+.pillar-body {
+  color: rgba(253, 250, 246, 0.80);
+}
+
+/* Carrusel: fix overflow para que las flechas sean visibles */
+.carousel-wrapper {
+  overflow: visible;
+  position: relative;
+}
+.carousel {
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+/* Flechas reposicionadas fuera del track, sobre el wrapper */
+.carousel-btn {
+  position: absolute;
+  top: calc(50% - 28px); /* sube para no quedar sobre el caption */
+  z-index: 20;
+  background: rgba(43, 31, 20, 0.80);
+  border: 1.5px solid var(--color-dorado);
+  color: var(--color-dorado);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  transition: background var(--transition), color var(--transition), transform var(--transition);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.45);
+}
+.carousel-btn:hover {
+  background: var(--color-dorado);
+  color: var(--color-madera);
+  transform: scale(1.08);
+}
+.carousel-btn--prev { left: -1.4rem; }
+.carousel-btn--next { right: -1.4rem; }
+
+/* Caption del carrusel más destacado */
+.carousel-caption {
+  padding: 2.4rem 2.8rem;
+  background: linear-gradient(
+    to top,
+    rgba(43, 31, 20, 0.95) 0%,
+    rgba(43, 31, 20, 0.70) 60%,
+    transparent 100%
+  );
+}
+.carousel-caption .carousel-tag {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  color: var(--color-dorado);
+  display: inline-block;
+  margin-bottom: 0.6rem;
+  border-bottom: 1px solid rgba(201, 169, 110, 0.4);
+  padding-bottom: 0.4rem;
+}
+.carousel-caption p {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--color-blanco);
+  line-height: 1.55;
+  max-width: 560px;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+}
+
+@media (max-width: 900px) {
+  .carousel-btn--prev { left: 0.4rem; }
+  .carousel-btn--next { right: 0.4rem; }
+}
+
+/* ============================================================
+   CARRUSEL: fix flechas dentro del #carousel (posicion final)
+   ============================================================ */
+.carousel {
+  position: relative; /* ancla los botones al contenedor de imagen */
+}
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);  /* centrado vertical limpio, sin scale que lo rompa */
+  z-index: 20;
+  background: rgba(43, 31, 20, 0.82);
+  border: 1.5px solid var(--color-dorado);
+  color: var(--color-dorado);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  line-height: 1;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.5);
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+  /* SIN transform en hover para que no se mueva */
+}
+.carousel-btn:hover {
+  background: var(--color-dorado);
+  color: var(--color-madera);
+  border-color: var(--color-dorado);
+}
+.carousel-btn--prev { left: 1.2rem; }
+.carousel-btn--next { right: 1.2rem; }
+
+/* Wrapper vuelve a overflow hidden para no mostrar slides laterales */
+.carousel-wrapper {
+  overflow: hidden;
+  padding: 0; /* sin padding lateral que antes corría las flechas */
+}
+
+@media (max-width: 900px) {
+  .carousel-btn { width: 38px; height: 38px; font-size: 1rem; }
+  .carousel-btn--prev { left: 0.6rem; }
+  .carousel-btn--next { right: 0.6rem; }
+}
