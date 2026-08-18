@@ -39,9 +39,12 @@
   <!-- NAVEGACIÓN -->
   <nav class="navbar" id="navbar">
     <div class="nav-inner">
-      <a href="#inicio" class="nav-logo">
-        <span class="nav-logo-name">San Bartolomé</span>
-        <span class="nav-logo-sub">Iglesia Anglicana · Rosario</span>
+      <a href="#inicio" class="nav-logo" aria-label="San Bartolomé - Inicio">
+        <img src="./assets/img/logo-san-bartolome.png" alt="Emblema Iglesia Anglicana San Bartolomé" class="nav-logo-img" />
+        <div class="nav-logo-text">
+          <span class="nav-logo-name">San Bartolomé</span>
+          <span class="nav-logo-sub">Iglesia Anglicana · Rosario</span>
+        </div>
       </a>
       <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
         <span></span><span></span><span></span>
@@ -116,24 +119,28 @@
     <div class="container container--centered reveal">
       <p class="section-eyebrow section-eyebrow--light">Nuestra fe</p>
       <h2 class="section-title section-title--light">Cómo vivimos la fe</h2>
-      <p class="section-body section-body--light">Creemos en un Dios que se conoce de a poco, en lo cotidiano: en el estudio bíblico, en la oración compartida, en los momentos simples de la semana. Ponemos énfasis en la vida comunitaria, en acompañarnos entre personas.</p>
-      <p class="section-body section-body--light">Trabajamos en equipo con la Iglesia San Miguel y Todos los Ángeles, de Martínez, Buenos Aires, porque entendemos que servir a Dios es también acompañarnos entre comunidades hermanas.</p>
+      <p class="section-body section-body--light">Creemos en un Dios que se conoce de a poco, en lo cotidiano: en el estudio bíblico, en la oración compartida y en los momentos simples de la semana. Ponemos énfasis en la vida comunitaria y en acompañarnos mutuamente.</p>
+      <p class="section-body section-body--light">Trabajamos en comunión y en equipo con la <strong>Iglesia San Salvador</strong> (Belgrano, CABA) y la <strong>Iglesia San Miguel y Todos los Ángeles</strong> (Martínez, Buenos Aires), porque entendemos que servir a Dios es también construir lazos entre comunidades hermanas.</p>
+      <div class="sister-churches reveal">
+        <span class="sister-badge">✦ San Salvador · Belgrano</span>
+        <span class="sister-badge">✦ San Miguel y Todos los Ángeles · Martínez</span>
+      </div>
     </div>
     <div class="container fe-pillars">
       <div class="pillar reveal">
         <div class="pillar-icon">✦</div>
         <h3 class="pillar-title">Adoración</h3>
-        <p class="pillar-body">Un espacio de encuentro con Dios a través de la Palabra, la oración y la reflexión compartida.</p>
+        <p class="pillar-body">Un espacio de encuentro con Dios a través de la Palabra, la música, la oración y la reflexión compartida.</p>
       </div>
       <div class="pillar reveal reveal--delay">
         <div class="pillar-icon">✦</div>
         <h3 class="pillar-title">Comunidad</h3>
-        <p class="pillar-body">Momentos de estudio bíblico y oración abiertos a todos los que quieran participar.</p>
+        <p class="pillar-body">Momentos de estudio bíblico semanal y oración abiertos a todas las personas que quieran participar.</p>
       </div>
       <div class="pillar reveal reveal--delay-2">
         <div class="pillar-icon">✦</div>
         <h3 class="pillar-title">Servicio</h3>
-        <p class="pillar-body">Entendemos que servir a Dios es involucrarnos con el otro, compartiendo amor y perdón.</p>
+        <p class="pillar-body">Servir a Dios es involucrarnos activamente con el prójimo, compartiendo ayuda concreta, amor y solidaridad.</p>
       </div>
     </div>
   </section>
@@ -141,10 +148,11 @@
   <!-- ACTIVIDADES -->
   <section class="section section--light" id="actividades">
     <div class="container reveal">
-      <p class="section-eyebrow">Vida comunitaria</p>
-      <h2 class="section-title">Actividades y<br>vida comunitaria</h2>
-      <p class="section-body section-body--intro">San Bartolomé no es solo un templo, es una comunidad en movimiento.</p>
+      <p class="section-eyebrow">Vida y comunidad</p>
+      <h2 class="section-title">Actividades de nuestra comunidad</h2>
+      <p class="section-body section-body--intro">San Bartolomé es un espacio vivo: música, solidaridad, reflexión bíblica y patrimonio abierto a toda la ciudad.</p>
     </div>
+
     <!-- Carrusel de fotos -->
     <div class="carousel-wrapper reveal">
       <div class="carousel" id="carousel">
@@ -152,24 +160,24 @@
         <button class="carousel-btn carousel-btn--next" id="carouselNext" aria-label="Siguiente">&#8594;</button>
         <div class="carousel-track" id="carouselTrack">
           <div class="carousel-slide">
-            <img src="./assets/img/open-house-san-bartolome.jpg" alt="Fachada del templo San Bartolomé" class="carousel-img" />
+            <img src="./assets/img/open-house-san-bartolome.jpg" alt="Conciertos en el templo San Bartolomé" class="carousel-img" />
             <div class="carousel-caption">
-              <span class="carousel-tag">Conciertos solidarios</span>
-              <p>Entrada libre con alimentos no perecederos para los excombatientes de Malvinas</p>
+              <span class="carousel-tag">Conciertos y música en vivo</span>
+              <p>Acústica histórica, coros y música clásica con entrada libre y solidaria</p>
             </div>
           </div>
           <div class="carousel-slide">
             <img src="./assets/img/open-house-san-bartolome-2.jpg" alt="Open House Rosario en San Bartolomé" class="carousel-img" />
             <div class="carousel-caption">
               <span class="carousel-tag">Open House Rosario</span>
-              <p>Abrimos el templo para que toda la ciudad conozca su historia y arquitectura</p>
+              <p>Abrimos el templo para que toda la ciudad conozca su historia, arquitectura y vitrales</p>
             </div>
           </div>
           <div class="carousel-slide">
-            <img src="./assets/img/fachada-iglesia.jpg" alt="Interior del templo San Bartolomé" class="carousel-img" />
+            <img src="./assets/img/fachada-iglesia.jpg" alt="Comunidad Anglicana San Bartolomé" class="carousel-img" />
             <div class="carousel-caption">
-              <span class="carousel-tag">Vida comunitaria</span>
-              <p>Un espacio vivo, de encuentro y de música en el corazón de Rosario</p>
+              <span class="carousel-tag">Fe y Vida Comunitaria</span>
+              <p>Estudios bíblicos, adoración y compromiso solidario con nuestra ciudad</p>
             </div>
           </div>
         </div>
@@ -177,32 +185,91 @@
       <div class="carousel-dots" id="carouselDots"></div>
     </div>
 
+    <!-- TARJETA DESTACADA: CONCIERTOS SOLIDARIOS -->
+    <div class="container featured-activity-wrapper reveal">
+      <article class="featured-activity-card">
+        <div class="featured-activity-badge">
+          <span class="badge-icon">✦</span> Actividad Destacada
+        </div>
+        <div class="featured-activity-content">
+          <span class="activity-tag">Música & Cultura en el Templo</span>
+          <h3 class="featured-activity-title">Conciertos en San Bartolomé</h3>
+          <p class="featured-activity-body">
+            La acústica natural de nuestra nave centenaria y su atmósfera solemne brindan un marco inigualable para conciertos de música de cámara, orquestas y ensambles corales en el corazón de Rosario.
+          </p>
+          <div class="featured-solidarity-callout">
+            <div class="callout-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            </div>
+            <div>
+              <p class="callout-title">Entrada Solidaria · Alimentos no perecederos</p>
+              <p class="callout-desc">Todos nuestros conciertos son de entrada libre y gratuita. Recibimos alimentos no perecederos destinados al <strong>Centro de Ex Combatientes de Malvinas de Rosario</strong> para su red solidaria y comedores comunitarios.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- GRILLA DE OTRAS ACTIVIDADES -->
     <div class="container activities-grid">
-      <article class="activity-card reveal">
+      <!-- ESTUDIO BÍBLICO ZOOM -->
+      <article class="activity-card activity-card--zoom reveal">
+        <div class="activity-card-header">
+          <span class="activity-tag activity-tag--zoom">Online · En Vivo</span>
+          <span class="live-dot" aria-hidden="true"></span>
+        </div>
+        <h3 class="activity-title">Estudio Bíblico por Zoom</h3>
+        <p class="activity-meta"><strong>Jueves · 19:30 hs</strong></p>
+        <p class="activity-pastor">A cargo del <strong>Pastor Agustín Marsal</strong></p>
+        <p class="activity-body">
+          Un espacio cálido y participativo para profundizar en las Sagradas Escrituras, reflexionar juntos y compartir la fe desde donde estés.
+        </p>
+        <div class="activity-card-action">
+          <a href="https://us04web.zoom.us/j/78879968051?pwd=y7gvTFoX30A1yc68XeYdR45OV2lURB.1" target="_blank" rel="noopener" class="btn btn-zoom" id="btnZoomEstudio">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg>
+            <span>Unirse por Zoom</span>
+          </a>
+          <span class="zoom-help">Enlace permanente y abierto</span>
+        </div>
+      </article>
+
+      <!-- RED SOLIDARIA MALVINAS -->
+      <article class="activity-card reveal reveal--delay">
         <div class="activity-card-header">
           <span class="activity-tag">Solidaridad</span>
         </div>
-        <h3 class="activity-title">Conciertos solidarios</h3>
-        <p class="activity-body">Abrimos nuestras puertas para conciertos donde la entrada es un alimento no perecedero. Lo recaudado llega a los excombatientes de Malvinas de Rosario y a la red de comedores que sostienen.</p>
+        <h3 class="activity-title">Red con Ex Combatientes</h3>
+        <p class="activity-body">
+          Canalizamos donaciones continuas de alimentos no perecederos para acompañar la tarea solidaria del <strong>Centro de Ex Combatientes de Malvinas de Rosario</strong>, quienes abastecen y cocinan viandas para personas y familias en situación de vulnerabilidad.
+        </p>
       </article>
-      <article class="activity-card reveal reveal--delay">
+
+      <!-- OPEN HOUSE ROSARIO -->
+      <article class="activity-card reveal reveal--delay-2">
         <div class="activity-card-header">
           <span class="activity-tag">Patrimonio</span>
         </div>
         <h3 class="activity-title">Open House Rosario</h3>
-        <p class="activity-body">Participamos del Open House Rosario, abriendo el templo para que toda la ciudad pueda conocer su historia, su arquitectura y sus vitrales de más de 150 años.</p>
+        <p class="activity-body">
+          Participamos de las jornadas de <strong>Open House Rosario</strong>, abriendo nuestro templo para que toda la comunidad pueda recorrer la arquitectura histórica de 1868, sus vitrales originales y la memoria viva de nuestra ciudad.
+        </p>
       </article>
-      <article class="activity-card activity-card--cta reveal reveal--delay-2">
-        <h3 class="activity-title">Próximas actividades</h3>
-        <p class="activity-body">Seguí nuestras redes para enterarte de cada actividad y evento antes que nadie.</p>
+
+      <!-- REDES SOCIALES / PRÓXIMAS ACTIVIDADES -->
+      <article class="activity-card activity-card--cta reveal">
+        <div class="activity-card-header">
+          <span class="activity-tag activity-tag--light">Comunidad</span>
+        </div>
+        <h3 class="activity-title">Próximos eventos</h3>
+        <p class="activity-body">Seguí nuestras redes oficiales para enterarte de cada concierto, fecha especial y actividad antes que nadie.</p>
         <div class="activity-socials">
-          <a href="#" class="social-link" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="22" height="22"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-            Instagram
+          <a href="https://www.instagram.com/iasb482" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            <span>Instagram @iasb482</span>
           </a>
-          <a href="#" class="social-link" aria-label="Facebook">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="22" height="22"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-            Facebook
+          <a href="https://www.facebook.com/IglesiaAnglicanaSanBartolome" target="_blank" rel="noopener" class="social-link" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            <span>Facebook San Bartolomé</span>
           </a>
         </div>
       </article>
@@ -214,21 +281,39 @@
     <div class="container container--centered reveal">
       <p class="section-eyebrow">Encontranos</p>
       <h2 class="section-title">Encuentros y horarios</h2>
+      <p class="section-body">Tanto en nuestro templo de Rosario como en los encuentros virtuales, te esperamos con las puertas abiertas.</p>
     </div>
     <div class="container horarios-grid">
+      <!-- DOMINGOS -->
       <div class="horario-card reveal">
+        <span class="horario-badge">Presencial</span>
         <p class="horario-dia">Todos los domingos</p>
         <p class="horario-hora">11:00 hs</p>
         <div class="horario-divider"></div>
         <h3 class="horario-nombre">Servicio de Oración Matutina</h3>
-        <p class="horario-desc">Un encuentro de lectura de la Palabra, adoración y prédica. Una vez al mes incluye la celebración de la Santa Eucaristía.</p>
+        <p class="horario-desc">Lectura de la Palabra, adoración, alabanza y prédica en el templo. Una vez al mes celebramos la Santa Eucaristía.</p>
       </div>
-      <div class="horario-card reveal reveal--delay">
-        <p class="horario-dia">Primer miércoles del mes</p>
+
+      <!-- JUEVES ZOOM -->
+      <div class="horario-card horario-card--zoom reveal reveal--delay">
+        <span class="horario-badge horario-badge--zoom">Online · Zoom</span>
+        <p class="horario-dia">Todos los jueves</p>
+        <p class="horario-hora">19:30 hs</p>
+        <div class="horario-divider"></div>
+        <h3 class="horario-nombre">Estudio Bíblico</h3>
+        <p class="horario-pastor">Pastor Agustín Marsal</p>
+        <p class="horario-desc">Profundización bíblica y diálogo participativo en comunidad a través de Zoom.</p>
+        <a href="https://us04web.zoom.us/j/78879968051?pwd=y7gvTFoX30A1yc68XeYdR45OV2lURB.1" target="_blank" rel="noopener" class="horario-link-zoom">Ingresar a la sala de Zoom &#8594;</a>
+      </div>
+
+      <!-- PRIMER MIÉRCOLES -->
+      <div class="horario-card reveal reveal--delay-2">
+        <span class="horario-badge">Presencial</span>
+        <p class="horario-dia">Primer miércoles de mes</p>
         <p class="horario-hora">19:30 hs</p>
         <div class="horario-divider"></div>
         <h3 class="horario-nombre">Encuentro de Oración</h3>
-        <p class="horario-desc">Un momento más íntimo para profundizar juntos en la Palabra y compartir en comunidad.</p>
+        <p class="horario-desc">Un momento íntimo para profundizar juntos en la oración comunitaria y compartir reflexiones.</p>
       </div>
     </div>
   </section>
@@ -285,8 +370,11 @@
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <p class="footer-name">San Bartolomé</p>
-        <p class="footer-sub">Iglesia Anglicana · Rosario · Desde 1868</p>
+        <img src="./assets/img/logo-san-bartolome.png" alt="Logo Iglesia Anglicana San Bartolomé" class="footer-logo-img" />
+        <div class="footer-brand-text">
+          <p class="footer-name">San Bartolomé</p>
+          <p class="footer-sub">Iglesia Anglicana · Rosario · Desde 1868</p>
+        </div>
       </div>
       <nav class="footer-nav" aria-label="Navegación del pie">
         <a href="#quienes-somos">Quiénes somos</a>

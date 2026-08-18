@@ -58,8 +58,24 @@ address { font-style: normal; }
 }
 .nav-logo {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
   line-height: 1.2;
+}
+.nav-logo-img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  transition: transform var(--transition), filter var(--transition);
+}
+.nav-logo:hover .nav-logo-img {
+  transform: scale(1.06);
+  filter: brightness(0) invert(0.85) sepia(0.4) saturate(2);
+}
+.nav-logo-text {
+  display: flex;
+  flex-direction: column;
 }
 .nav-logo-name {
   font-family: var(--font-display);
@@ -395,6 +411,34 @@ address { font-style: normal; }
   line-height: 1.7;
 }
 
+/* --- COMUNIDADES HERMANAS (Cómo vivimos la fe) ---------- */
+.sister-churches {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem 1.2rem;
+  margin-top: 2rem;
+}
+.sister-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1.2rem;
+  background: rgba(201, 169, 110, 0.12);
+  border: 1px solid rgba(201, 169, 110, 0.35);
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--color-dorado);
+  transition: background var(--transition), border-color var(--transition), transform var(--transition);
+}
+.sister-badge:hover {
+  background: rgba(201, 169, 110, 0.24);
+  border-color: var(--color-dorado);
+  transform: translateY(-2px);
+}
+
 /* --- PILLARS (Cómo vivimos la fe) ------------------------- */
 .fe-pillars {
   display: grid;
@@ -436,24 +480,117 @@ address { font-style: normal; }
   line-height: 1.7;
 }
 
+/* --- FEATURED ACTIVITY (Conciertos en San Bartolomé) ----- */
+.featured-activity-wrapper {
+  margin-top: 3.5rem;
+}
+.featured-activity-card {
+  position: relative;
+  background: linear-gradient(135deg, #FFFDF9 0%, #F5EDE0 100%);
+  border: 1px solid rgba(139, 58, 42, 0.2);
+  border-left: 4px solid var(--color-ladrillo);
+  border-radius: var(--radius);
+  padding: 3rem 3.2rem;
+  box-shadow: 0 10px 30px rgba(43, 31, 20, 0.06);
+  overflow: hidden;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+.featured-activity-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(43, 31, 20, 0.12);
+  border-color: rgba(139, 58, 42, 0.4);
+}
+.featured-activity-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--color-ladrillo);
+  color: var(--color-blanco);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.9rem;
+  border-radius: 2px;
+  margin-bottom: 1.2rem;
+}
+.featured-activity-badge .badge-icon {
+  color: var(--color-dorado);
+}
+.featured-activity-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+  font-weight: 700;
+  color: var(--color-madera);
+  line-height: 1.2;
+  margin-bottom: 1.1rem;
+}
+.featured-activity-body {
+  font-size: 1.05rem;
+  color: var(--color-texto);
+  line-height: 1.75;
+  max-width: 840px;
+  margin-bottom: 1.8rem;
+}
+.featured-solidarity-callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  background: rgba(139, 58, 42, 0.06);
+  border: 1px solid rgba(139, 58, 42, 0.2);
+  border-radius: 4px;
+  padding: 1.4rem 1.6rem;
+}
+.callout-icon {
+  flex-shrink: 0;
+  color: var(--color-ladrillo);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: rgba(139, 58, 42, 0.1);
+  border-radius: 50%;
+}
+.callout-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-ladrillo);
+  margin-bottom: 0.25rem;
+}
+.callout-desc {
+  font-size: 0.92rem;
+  color: var(--color-texto);
+  line-height: 1.6;
+}
+
 /* --- ACTIVITIES GRID -------------------------------------- */
 .activities-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
-  margin-top: 3.5rem;
+  margin-top: 2rem;
 }
 .activity-card {
   background: var(--color-blanco);
-  padding: 2.2rem;
+  padding: 2.4rem 2.2rem;
   border-top: 3px solid var(--color-piedra);
-  transition: border-color var(--transition), transform var(--transition);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 20px rgba(43, 31, 20, 0.04);
+  display: flex;
+  flex-direction: column;
+  transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
 }
 .activity-card:hover {
   border-color: var(--color-ladrillo);
   transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(43, 31, 20, 0.08);
 }
 .activity-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: 1rem;
 }
 .activity-tag {
@@ -464,6 +601,88 @@ address { font-style: normal; }
   text-transform: uppercase;
   color: var(--color-vitral);
 }
+.activity-tag--zoom {
+  color: #1F5F8B;
+}
+.activity-tag--light {
+  color: var(--color-dorado);
+}
+.live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #2563EB;
+  position: relative;
+}
+.live-dot::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid rgba(37, 99, 235, 0.4);
+  animation: pulseLive 2s infinite ease-out;
+}
+@keyframes pulseLive {
+  0% { transform: scale(0.6); opacity: 1; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+.activity-card--zoom {
+  border-top-color: #2563EB;
+  background: linear-gradient(180deg, #FDFAF6 0%, #F3F7FC 100%);
+}
+.activity-card--zoom:hover {
+  border-color: #1D4ED8;
+}
+.activity-meta {
+  font-size: 0.95rem;
+  color: var(--color-ladrillo);
+  margin-bottom: 0.2rem;
+}
+.activity-pastor {
+  font-size: 0.88rem;
+  color: var(--color-texto-suave);
+  margin-bottom: 0.9rem;
+  font-style: italic;
+}
+.activity-card-action {
+  margin-top: auto;
+  padding-top: 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.btn-zoom {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: #1E40AF;
+  color: #FFFFFF;
+  font-family: var(--font-body);
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.4rem;
+  border-radius: var(--radius);
+  border: 1px solid #1E40AF;
+  transition: all var(--transition);
+  box-shadow: 0 4px 14px rgba(30, 64, 175, 0.25);
+}
+.btn-zoom:hover {
+  background: #172554;
+  border-color: #172554;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(30, 64, 175, 0.35);
+  color: #FFFFFF;
+}
+.zoom-help {
+  font-size: 0.78rem;
+  color: var(--color-texto-suave);
+  letter-spacing: 0.02em;
+}
+
 .activity-title {
   font-family: var(--font-display);
   font-size: 1.3rem;
@@ -511,15 +730,45 @@ address { font-style: normal; }
 /* --- HORARIOS --------------------------------------------- */
 .horarios-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2.5rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
   margin-top: 3.5rem;
 }
 .horario-card {
   background: var(--color-blanco);
-  padding: 2.8rem 2.5rem;
+  padding: 2.6rem 2rem;
   border-bottom: 3px solid var(--color-ladrillo);
+  border-radius: var(--radius);
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 4px 18px rgba(43, 31, 20, 0.04);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.horario-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(43, 31, 20, 0.09);
+}
+.horario-badge {
+  display: inline-block;
+  align-self: center;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-ladrillo);
+  background: rgba(139, 58, 42, 0.08);
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  margin-bottom: 1.2rem;
+}
+.horario-badge--zoom {
+  color: #1E40AF;
+  background: rgba(30, 64, 175, 0.1);
+}
+.horario-card--zoom {
+  border-bottom-color: #2563EB;
 }
 .horario-dia {
   font-family: var(--font-body);
@@ -530,31 +779,56 @@ address { font-style: normal; }
   color: var(--color-ladrillo);
   margin-bottom: 0.5rem;
 }
+.horario-card--zoom .horario-dia {
+  color: #1E40AF;
+}
 .horario-hora {
   font-family: var(--font-display);
-  font-size: 3.2rem;
+  font-size: 3rem;
   font-weight: 900;
   color: var(--color-texto);
   line-height: 1;
-  margin-bottom: 1.4rem;
+  margin-bottom: 1.2rem;
 }
 .horario-divider {
   width: 3rem;
   height: 2px;
   background: var(--color-dorado);
-  margin: 0 auto 1.4rem;
+  margin: 0 auto 1.2rem;
 }
 .horario-nombre {
   font-family: var(--font-display);
   font-size: 1.15rem;
   font-weight: 700;
   color: var(--color-texto);
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.4rem;
+}
+.horario-pastor {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-texto-suave);
+  margin-bottom: 0.6rem;
+  font-style: italic;
 }
 .horario-desc {
   font-size: 0.92rem;
   color: var(--color-texto-suave);
-  line-height: 1.7;
+  line-height: 1.65;
+  margin-bottom: 1rem;
+}
+.horario-link-zoom {
+  display: inline-block;
+  margin-top: auto;
+  padding-top: 1rem;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: #1E40AF;
+  letter-spacing: 0.03em;
+  transition: color var(--transition), transform var(--transition);
+}
+.horario-link-zoom:hover {
+  color: #172554;
+  text-decoration: underline;
 }
 
 /* --- CONTACTO --------------------------------------------- */
@@ -600,8 +874,31 @@ address { font-style: normal; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.8rem;
   text-align: center;
+}
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+}
+.footer-logo-img {
+  width: 68px;
+  height: 68px;
+  object-fit: contain;
+  filter: brightness(0) invert(0.9) sepia(0.35) saturate(1.8);
+  opacity: 0.92;
+  transition: opacity var(--transition), transform var(--transition);
+}
+.footer-logo-img:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+.footer-brand-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .footer-name {
   font-family: var(--font-display);
@@ -667,6 +964,8 @@ address { font-style: normal; }
   .section { padding: 5rem 1.2rem; }
   .hero-title { font-size: 2rem; }
   .hero-timeline { width: 90vw; }
+  .featured-activity-card { padding: 2rem 1.4rem; }
+  .featured-solidarity-callout { flex-direction: column; gap: 0.8rem; padding: 1.2rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   .timeline-line, .timeline-dot { animation: none; }
@@ -861,6 +1160,13 @@ address { font-style: normal; }
   .carousel-btn--next { right: 0.6rem; }
 }
 @media (max-width: 540px) {
-  .carousel { aspect-ratio: 1 / 1; }
-  .carousel-caption { padding: 1.2rem; }
+  .carousel { aspect-ratio: auto; }
+  .carousel-slide { display: flex; flex-direction: column; }
+  .carousel-img { aspect-ratio: 16 / 9; height: auto; }
+  .carousel-caption { 
+    position: relative; 
+    padding: 1.8rem 1.5rem; 
+    background: var(--color-madera); 
+  }
+  .carousel-btn { top: 35%; }
 }
