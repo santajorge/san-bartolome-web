@@ -1050,6 +1050,38 @@ address { font-style: normal; }
   .horarios-grid {
     grid-template-columns: 1fr;
   }
+  .split-text {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .split-text .section-body {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .contact-address {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .contact-item {
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+  .contact-socials {
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .contact-social-link {
+    justify-content: center;
+    text-align: center;
+  }
   .split-map { height: 280px; width: 100%; }
   .deco-card { max-width: 100%; width: 100%; }
 }
@@ -1079,8 +1111,39 @@ address { font-style: normal; }
   .featured-solidarity-callout { flex-direction: column; gap: 0.8rem; padding: 1.15rem; }
   .activity-card { padding: 1.8rem 1.25rem; }
   .horario-card { padding: 2rem 1.25rem; }
-  .footer { padding: 3.5rem 1.1rem 2.8rem; width: 100%; }
-  .footer-inner { width: 100%; padding: 0; }
+  .footer {
+    padding: 3.5rem 1.1rem 2.8rem;
+    width: 100%;
+    text-align: center;
+  }
+  .footer-inner {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .footer-brand,
+  .footer-brand-text {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+  .footer-name,
+  .footer-sub,
+  .footer-legal {
+    width: 100%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .footer-nav {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   .timeline-line, .timeline-dot { animation: none; }
