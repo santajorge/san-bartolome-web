@@ -129,10 +129,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (!galleryItems.length) return;
 
+  const collageEl     = document.getElementById('galleryCollage');
   let currentFilter = 'all';
   let expandedAll   = false;
 
   function applyGalleryState() {
+    if (collageEl) {
+      collageEl.setAttribute('data-active-filter', currentFilter);
+    }
     galleryItems.forEach(item => {
       const category = item.getAttribute('data-category');
       const isExtra  = item.classList.contains('gallery-item--extra');
