@@ -112,3 +112,137 @@ document.addEventListener('DOMContentLoaded', function () {
 
   startTimer();
 });
+
+// --- GALERÍA / COLLAGE CLASIFICADO Y LIGHTBOX ---
+document.addEventListener('DOMContentLoaded', function () {
+  const filterBtns    = Array.from(document.querySelectorAll('.gallery-filter-btn'));
+  const galleryItems  = Array.from(document.querySelectorAll('.gallery-item'));
+  const moreWrap      = document.getElementById('galleryMoreWrap');
+  const btnMore       = document.getElementById('btnGalleryMore');
+  const lightbox      = document.getElementById('lightbox');
+  const lightboxImg   = document.getElementById('lightboxImg');
+  const lightboxCat   = document.getElementById('lightboxCat');
+  const lightboxTitle = document.getElementById('lightboxTitle');
+  const btnClose      = document.getElementById('lightboxClose');
+  const btnPrev       = document.getElementById('lightboxPrev');
+  const btnNext       = document.getElementById('lightboxNext');
+
+  if (!galleryItems.length) return;
+
+  let currentFilter = 'all';
+  let expandedAll   = false;
+
+  function applyGalleryState() {
+    galleryItems.forEach(item => {
+      const category = item.getAttribute('data-category');
+      const isExtra  = item.classList.contains('gallery-item--extra');
+      const matches  = currentFilter === 'all' || category === currentFilter;
+
+      item.classList.toggle('is-hidden', !matches);
+      if (currentFilter === 'all') {
+        item.classList.toggle('is-collapsed', isExtra && !expandedAll);
+      } else {
+        item.classList.remove('is-collapsed');
+      }
+    });
+
+    if (moreWrap && btnMore) {
+      if (currentFilter === 'all') {
+        moreWrap.classList.remove('is-hidden');
+        btnMore.querySelector('span').textContent = expandedAll
+          ? 'Mostrar menos fotos'
+          : 'Ver las ' + galleryItems.length + ' fotos de la galería';
+      } else {
+        moreWrap.classList.add('is-hidden');
+      }
+    }
+  }
+
+  // Inicializar estado
+  applyGalleryState();
+
+  // Botón Ver más / Mostrar menos en pestaña "Todas"
+  if (btnMore) {
+    btnMore.addEventListener('click', () => {
+      expandedAll = !expandedAll;
+      applyGalleryState();
+      if (!expandedAll) {
+        const galSection = document.getElementById('galeria');
+        if (galSection) {
+          const top = galSection.getBoundingClientRect().top + window.scrollY - 72;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      }
+    });
+  }
+
+  // Filtrado por categoría (Todas / Fachada / Interior / Conciertos)
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      currentFilter = btn.getAttribute('data-filter');
+      filterBtns.forEach(b => {
+        b.classList.toggle('active', b === btn);
+        b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
+      });
+      applyGalleryState();
+    });
+  });
+
+  // Lightbox para ampliar fotos
+  let visibleItems = [];
+  let activeIndex  = 0;
+
+  function updateVisibleItems() {
+    visibleItems = galleryItems.filter(item => !item.classList.contains('is-hidden'));
+  }
+
+  function showLightbox(index) {
+    updateVisibleItems();
+    if (!visibleItems.length) return;
+    activeIndex = ((index % visibleItems.length) + visibleItems.length) % visibleItems.length;
+    const item  = visibleItems[activeIndex];
+    const img   = item.querySelector('img');
+    const cat   = item.querySelector('.gallery-cat');
+    const title = item.querySelector('.gallery-title');
+
+    lightboxImg.src = img ? img.src : '';
+    lightboxImg.alt = img ? img.alt : '';
+    lightboxCat.textContent   = cat ? cat.textContent : '';
+    lightboxTitle.textContent = title ? title.textContent : '';
+
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  galleryItems.forEach(item => {
+    item.addEventListener('click', () => {
+      updateVisibleItems();
+      const idx = visibleItems.indexOf(item);
+      if (idx !== -1) showLightbox(idx);
+    });
+  });
+
+  if (btnClose) btnClose.addEventListener('click', closeLightbox);
+  if (btnPrev)  btnPrev.addEventListener('click', (e) => { e.stopPropagation(); showLightbox(activeIndex - 1); });
+  if (btnNext)  btnNext.addEventListener('click', (e) => { e.stopPropagation(); showLightbox(activeIndex + 1); });
+
+  if (lightbox) {
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox || !lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape')     closeLightbox();
+    if (e.key === 'ArrowRight') showLightbox(activeIndex + 1);
+    if (e.key === 'ArrowLeft')  showLightbox(activeIndex - 1);
+  });
+});
