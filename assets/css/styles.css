@@ -1004,11 +1004,42 @@ address { font-style: normal; }
   transition: color var(--transition);
 }
 .footer-nav a:hover { color: var(--color-dorado); }
+.footer-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding-top: 1.4rem;
+  border-top: 1px solid rgba(201, 169, 110, 0.12);
+}
 .footer-legal {
   font-family: var(--font-sans);
   font-size: 0.78rem;
-  color: rgba(253,250,246,0.3);
+  color: rgba(253,250,246,0.38);
   letter-spacing: 0.06em;
+}
+.footer-credit {
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  color: rgba(253, 250, 246, 0.42);
+  letter-spacing: 0.06em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.footer-credit-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--color-dorado);
+  font-weight: 600;
+  transition: color var(--transition), opacity var(--transition);
+}
+.footer-credit-link:hover {
+  color: var(--color-blanco);
 }
 
 /* --- REVEAL (preparaciÃ³n, sin animaciÃ³n aÃºn) -------------- */
@@ -2174,7 +2205,9 @@ address { font-style: normal; }
   }
   .footer-name,
   .footer-sub,
-  .footer-legal {
+  .footer-bottom,
+  .footer-legal,
+  .footer-credit {
     width: 100%;
     text-align: center;
     margin-left: auto;
